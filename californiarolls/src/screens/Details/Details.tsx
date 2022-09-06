@@ -4,9 +4,9 @@ import React from "react";
 import { StyleSheet, Image, Text, View } from "react-native";
 
 
-import { Button } from "~/components/Button";
-import { Card } from "~/components/Card";
-import { RouteParams } from "~/navigation/RootNavigator";
+import { Button } from "../../components/Button";
+import { Card } from "../../components/Card";
+import { RouteParams } from "../../navigation/RootNavigator";
 
 interface ProfileProps { }
 
