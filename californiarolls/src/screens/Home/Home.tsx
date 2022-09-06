@@ -10,6 +10,8 @@ import {
 } from "../../components/DetailsListItem/DetailsListItem";
 import { RouteParams } from "~/navigation/RootNavigator";
 
+import { Card } from "../../components/Card";
+
 interface HomeProps { }
 
 const detailsList: Details[] = [
@@ -47,17 +49,18 @@ export const Home: React.FunctionComponent<HomeProps> = ({ }) => {
     );
   };
 
-  const listSeparator = () => (
-    <View style={styles.separator}/>
-  );
+  // const listSeparator = () => (
+  //   // <View style={styles.separator} />
+  // );
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={[{height: '100%'}]}>
       <View>
         <FlatList
           data={detailsList}
           renderItem={renderListItem}
-          ItemSeparatorComponent={listSeparator}
+          // ItemSeparatorComponent={listSeparator}
+          // horizontal={true}
         />
       </View>
     </SafeAreaView>
@@ -69,4 +72,6 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     borderBottomColor: '#737373',
   },
+  
+  
 })
