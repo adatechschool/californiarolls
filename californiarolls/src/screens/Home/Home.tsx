@@ -33,7 +33,7 @@ export const Home: React.FunctionComponent<HomeProps> = ({ }) => {
   const navigation = useNavigation<NativeStackNavigationProp<RouteParams>>();
 
   const renderListItem = ({ item }: { item: Details }) => {
-    const onProfilePress = () => {
+    const onDetailsPress = () => {
       console.log(item.surfBreak);
       navigation.navigate("Details", {
         id: item.id,
@@ -43,7 +43,7 @@ export const Home: React.FunctionComponent<HomeProps> = ({ }) => {
       });
     };
     return (
-      <DetailsListItem key={item.id} onPress={onProfilePress} details={item} />
+      <DetailsListItem key={item.id} onPress={onDetailsPress} details={item} />
     );
   };
 
