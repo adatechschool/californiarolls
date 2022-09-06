@@ -1,31 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image } from 'react-native';
-import { Button } from "./src/components/Button";
+import { NavigationContainer } from "@react-navigation/native";
+import { RootNavigator } from "./src/navigation/RootNavigator";
 
 const buttonPressed = () => {
   console.log("button pressed");
 };
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Image
-        source={{
-          uri: 'https://dl.airtable.com/ZuXJZ2NnTF40kCdBfTld_thomas-ashlock-64485-unsplash.jpg'
-        }}
-        resizeMode="cover"
-        style={
-          [{
-            width: '100%',
-            height: '35%',
-           }]}
-        />
-      <Text style={styles.tilte}>Reef Break</Text>
-      <Text style={styles.address}> 📍 Pipeline, Oahu, Hawaii</Text>
-      <Text style={styles.address}> ⭐ 4/5</Text>
-      <Text style={styles.text}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices erat sed ipsum finibus, non laoreet est sagittis. Suspendisse malesuada elit non ligula ullamcorper, posuere vestibulum diam dapibus. Pellentesque mollis mauris vitae tellus porta, sit amet rutrum ipsum dignissim. Proin sit amet blandit libero</Text>
-      <Button onPress={buttonPressed}>Ajouter aux Favoris 💓</Button>
+    <NavigationContainer>
+      <RootNavigator />
       <StatusBar style="auto" />
-    </View>
+    </NavigationContainer>
   );
 }
 

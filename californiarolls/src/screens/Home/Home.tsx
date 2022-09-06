@@ -7,7 +7,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import {
   Details,
   DetailsListItem,
-} from "~/components/DetailsListItem/DetailsListItem";
+} from "../../components/DetailsListItem/DetailsListItem";
 import { RouteParams } from "~/navigation/RootNavigator";
 
 interface HomeProps { }
