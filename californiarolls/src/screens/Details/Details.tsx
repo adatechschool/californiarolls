@@ -1,16 +1,15 @@
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+// import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React from "react";
 import { StyleSheet, Image, Text, View } from "react-native";
 
 
 import { Button } from "../../components/Button";
-import { Card } from "../../components/Card";
 import { RouteParams } from "../../navigation/RootNavigator";
 
-interface ProfileProps { }
+interface DetailsProps { }
 
-export const Details: React.FunctionComponent<ProfileProps> = ({ }) => {
+export const Details: React.FunctionComponent<DetailsProps> = ({ }) => {
   const route = useRoute<RouteProp<RouteParams>>();
 
   const buttonPressed = () => {
@@ -20,7 +19,7 @@ export const Details: React.FunctionComponent<ProfileProps> = ({ }) => {
     <View style={styles.container}>
       <Image
         source={{
-          uri: 'https://dl.airtable.com/ZuXJZ2NnTF40kCdBfTld_thomas-ashlock-64485-unsplash.jpg'
+          uri: route.params?.image
         }}
         resizeMode="cover"
         style={
@@ -29,9 +28,9 @@ export const Details: React.FunctionComponent<ProfileProps> = ({ }) => {
             height: '35%',
           }]}
       />
-      <Text style={styles.tilte}>Reef Break</Text>
-      <Text style={styles.address}> 📍 Pipeline, Oahu, Hawaii</Text>
-      <Text style={styles.address}> ⭐ 4/5</Text>
+      <Text style={styles.tilte}>{route.params?.title}</Text>
+      <Text style={styles.address}> 📍 {route.params?.address}</Text>
+      <Text style={styles.address}> ⭐ {route.params?.difficulty}</Text>
       <Text style={styles.text}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices erat sed ipsum finibus, non laoreet est sagittis. Suspendisse malesuada elit non ligula ullamcorper, posuere vestibulum diam dapibus. Pellentesque mollis mauris vitae tellus porta, sit amet rutrum ipsum dignissim. Proin sit amet blandit libero</Text>
       <Button onPress={buttonPressed}>Ajouter aux Favoris 💓</Button>
     </View>

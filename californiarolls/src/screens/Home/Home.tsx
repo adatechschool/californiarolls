@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React from "react";
-import { StyleSheet, FlatList, View } from "react-native";
+import { StyleSheet, FlatList, View, Dimensions } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import {
@@ -20,14 +20,25 @@ const detailsList: Details[] = [
     photo:
       "https://dl.airtable.com/ZuXJZ2NnTF40kCdBfTld_thomas-ashlock-64485-unsplash.jpg",
     surfBreak: "Reef Break",
-    address: "Pipeline, Oahu, Hawaii",
+    difficulty: 4,
+    address: [21.666836, -158.057222] //parser avec Geocoder
   },
+
   {
     id: "2",
     photo:
       "https://dl.airtable.com/e3QoP3cFSyykZJOvWGIy_cesar-couto-477018-unsplash%20(1).jpg",
     surfBreak: "Sunny Joy",
-    address: "upertubes, Jeffreys Bay, South Africa ",
+    address: [37.9, -122.683333],
+    difficulty: 5,
+  },
+  {
+    id: "3",
+    photo:
+      "https://dl.airtable.com/YzqA020RRLaTyAZAta9g_brandon-compagne-308937-unsplash.jpg",
+    surfBreak: "Point Break",
+    address: [37.9, -122.683333],
+    difficulty: 4,
   }
 ];
 
@@ -37,11 +48,12 @@ export const Home: React.FunctionComponent<HomeProps> = ({ }) => {
   const renderListItem = ({ item }: { item: Details }) => {
     const onDetailsPress = () => {
       console.log(item.surfBreak);
-      navigation.navigate("Details", {
+      navigation.navigate("Details", { //méthode propre à RN
         id: item.id,
         title: item.surfBreak,
         image: item.photo,
-        description: item.address,
+        address: item.address,
+        difficulty: item.difficulty,
       });
     };
     return (
@@ -54,13 +66,13 @@ export const Home: React.FunctionComponent<HomeProps> = ({ }) => {
   // );
 
   return (
-    <SafeAreaView style={[{height: '100%'}]}>
-      <View>
+    <SafeAreaView>
+      <View style={styles.container}>
         <FlatList
           data={detailsList}
           renderItem={renderListItem}
-          // ItemSeparatorComponent={listSeparator}
-          // horizontal={true}
+        // ItemSeparatorComponent={listSeparator}
+        // horizontal={true}
         />
       </View>
     </SafeAreaView>
@@ -68,10 +80,16 @@ export const Home: React.FunctionComponent<HomeProps> = ({ }) => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    // fullHeight: Dimensions.get('window').height,
+    fullWidth: Dimensions.get('window').width,
+    // height: '100%',
+  },
   separator: {
     marginVertical: 8,
     borderBottomColor: '#737373',
   },
-  
-  
+
+
 })

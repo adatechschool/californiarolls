@@ -7,7 +7,8 @@ export type Details = {
   id: string;
   photo: string;
   surfBreak: string;
-  address: string;
+  address: number[];
+  difficulty: number;
 };
 
 interface DetailsListItemProps {
