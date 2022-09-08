@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React from "react";
-import { StyleSheet, FlatList, View, Dimensions } from "react-native";
+import { StyleSheet, FlatList, View, Dimensions, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import {
@@ -61,17 +61,18 @@ export const Home: React.FunctionComponent<HomeProps> = ({ }) => {
     );
   };
 
-  // const listSeparator = () => (
-  //   // <View style={styles.separator} />
-  // );
+  const listSeparator = () => (
+    <View style={styles.separator} />
+  );
 
   return (
     <SafeAreaView>
       <View style={styles.container}>
+        <Text style={styles.title}>Popular Spots 🔥</Text>
         <FlatList
           data={detailsList}
           renderItem={renderListItem}
-        // ItemSeparatorComponent={listSeparator}
+        ItemSeparatorComponent={listSeparator}
         // horizontal={true}
         />
       </View>
@@ -82,9 +83,17 @@ export const Home: React.FunctionComponent<HomeProps> = ({ }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems: "center",
     // fullHeight: Dimensions.get('window').height,
-    fullWidth: Dimensions.get('window').width,
+    //fullWidth: Dimensions.get('window').width,
     // height: '100%',
+  },
+  title: {
+    fontWeight: 'bold',
+    color: '#123348',
+    fontSize: 24,
+    marginBottom: 10,
+    marginTop: 10,
   },
   separator: {
     marginVertical: 8,

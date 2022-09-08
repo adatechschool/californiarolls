@@ -33,10 +33,8 @@ export const DetailsListItem: React.FunctionComponent<DetailsListItemProps> = ({
           }
         />
         <View>
-          <Text>{details.surfBreak}</Text>
-          <Text>
-            {details.address}
-          </Text>
+          <Text style={styles.text}>{details.surfBreak}</Text>
+          <Text style={styles.address}>📍{details.address}</Text>
         </View>
       </View>
     </TouchableWithoutFeedback>
@@ -49,12 +47,25 @@ const styles = StyleSheet.create(
       width: '100%',
       flex: 1,
       backgroundColor: "#fff",
-      alignItems: "center",
-      justifyContent: "center",
+      // alignItems: "center",
+      // justifyContent: "center",
+      marginTop: 10,
+      // marginLeft: 70,
     },
     img: {
       width: 250,
       height: 250,
+      borderRadius: 5,
     },
+    text: {
+      fontWeight: 'bold',
+      color: '#123348',
+      fontSize: 20,
+      marginBottom: 5,
+      marginTop: 10,
+    },
+    address: {
+      color: '#123348',
+    }
   }
 )
