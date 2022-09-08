@@ -20,7 +20,15 @@ export const RootNavigator = () => {
   return (
     <Stack.Navigator>
       <Stack.Group>
-        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{
+            title: 'California Rolls 🏄',
+            headerStyle: {
+              backgroundColor: '#007DE4',
+
+            },}} />
         <Stack.Screen
           name="Details"
           component={Details}
