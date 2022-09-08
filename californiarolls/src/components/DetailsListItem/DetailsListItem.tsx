@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, Text, TouchableWithoutFeedback, View } from "react-native";
+import { Image, Text, TouchableWithoutFeedback, View, StyleSheet } from "react-native";
 
 import { Card } from "~/components/Card";
 
@@ -7,7 +7,8 @@ export type Details = {
   id: string;
   photo: string;
   surfBreak: string;
-  address: string;
+  address: number[];
+  difficulty: number;
 };
 
 interface DetailsListItemProps {
@@ -21,18 +22,15 @@ export const DetailsListItem: React.FunctionComponent<DetailsListItemProps> = ({
 }) => {
   return (
     <TouchableWithoutFeedback onPress={onPress}>
-      <View>
+      <View style={styles.container}>
         <Image
           source={{
             uri: details.photo,
           }}
           resizeMode="cover"
-          style={[
-            {
-              width: 92,
-              height: 92,
-            },
-          ]}
+          style={
+            styles.img
+          }
         />
         <View>
           <Text>{details.surfBreak}</Text>
@@ -44,3 +42,19 @@ export const DetailsListItem: React.FunctionComponent<DetailsListItemProps> = ({
     </TouchableWithoutFeedback>
   );
 }
+
+const styles = StyleSheet.create(
+  {
+    container: {
+      width: '100%',
+      flex: 1,
+      backgroundColor: "#fff",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    img: {
+      width: '80%',
+      height: '100%',
+    },
+  }
+)

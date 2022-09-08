@@ -8,8 +8,9 @@ export type RouteParams = {
   Details: {
     id: string;
     title: string;
-    description: string;
+    address: number[];
     image: string;
+    difficulty: number;
   };
 };
 
